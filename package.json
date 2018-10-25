@@ -1,0 +1,65 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "build": "webpack --mode development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedro-rodalia/chat.git"
+  },
+  "author": "Pedro Rodriguez Alia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pedro-rodalia/chat/issues"
+  },
+  "homepage": "https://github.com/pedro-rodalia/chat#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.5",
+    "@fortawesome/free-brands-svg-icons": "^5.4.0",
+    "@fortawesome/free-regular-svg-icons": "^5.4.0",
+    "@fortawesome/free-solid-svg-icons": "^5.4.0",
+    "@fortawesome/react-fontawesome": "^0.1.3",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "minimatch": "^3.0.4",
+    "morgan": "~1.9.0",
+    "postcss-import": "^12.0.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "tailwindcss": "^0.6.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/plugin-transform-arrow-functions": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-2": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "gulp": "^4.0.0",
+    "gulp-nodemon": "^2.2.1",
+    "mini-css-extract-plugin": "^0.4.3",
+    "nodemon": "^1.18.4",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-stream": "^5.1.1"
+  }
+}

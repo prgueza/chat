@@ -1,0 +1,58 @@
+html, body, #root{
+  height: 100%;
+}
+
+body {
+  background-color: #08AEEA;
+  background-image: linear-gradient(160deg, #08AEEA 0%, #2AF598 100%);
+}
+
+h1 {
+  @apply font-sans text-lg text-white text-5xl font-light;
+}
+
+h2 {
+  @apply font-sans text-lg text-white text-3xl font-hairline mt-5;
+}
+
+.app {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  grid-template-rows: 30% 20% 30% 10% 10%;
+  grid-template-areas: ". . ."
+                       ". content ."
+                       ". links ."
+                       ". . ."
+                       ". credits .";
+}
+
+.content {
+  grid-area: content;
+  @apply text-center;
+}
+
+.links {
+  grid-area: links;
+  @apply text-center flex;
+}
+
+.btn {
+  @apply flex-1 h-12 bg-transparent font-sans text-lg text-white font-hairline p-3 my-5 mx-2 border border-white rounded border-solid shadow;
+}
+
+.btn:hover {
+  @apply bg-white text-teal-light;
+  animation-name: example;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+}
+
+.btn:active {
+  @apply shadow-none;
+}
+
+@keyframes example {
+    from {@apply bg-transparent text-white}
+    to {@apply bg-white text-teal-light}
+}
