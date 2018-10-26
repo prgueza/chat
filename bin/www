@@ -6,6 +6,7 @@
 
 const debug = require('debug')('boilerplate:server');
 const http = require('http');
+const sockets = require('socket.io');
 const app = require('../app');
 
 /**
@@ -41,6 +42,8 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
+const io = sockets.listen(server);
+require('../sockets/base')(io);
 
 
 /**
