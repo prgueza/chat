@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const User = ({ user }) => (
-  <div className="user block px-6 py-3">
-    { user.name }
-  </div>
+const User = ({ user: { name } }) => (
+  <li className="user antialiased block text-grey-darkest text-lg py-2">
+    <FontAwesomeIcon className="align-middle text-teal text-xxs mr-3 mb-1" icon="circle" />
+    { name }
+  </li>
 );
 
 User.propTypes = {
