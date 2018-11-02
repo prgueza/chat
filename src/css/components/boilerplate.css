@@ -56,6 +56,10 @@ body {
   @apply text-xl;
 }
 
+.write-icon-container:focus, .write-icon:focus {
+  @apply outline-none;
+}
+
 .user {
   @apply user antialiased block text-grey-darkest text-lg py-2;
 }
@@ -85,29 +89,29 @@ body {
 }
 
 .message-else {
-  @flex flex-row
+  @flex flex-row;
 }
 
 .message-content {
-  @apply relative rounded border border-teal shadow max-w-2/3 pl-4 py-2 pr-12 mr-2
+  @apply relative rounded border border-teal shadow max-w-2/3 pl-4 py-2 pr-12 mr-2;
 }
 
 .message-author {
-  @apply font-hairline mb-1 text-teal
+  @apply font-hairline mb-1 text-teal;
 }
 
 .message-timestamp {
-  @apply font-hairline text-xxs absolute pin-b pin-r mb-1 mr-2
+  @apply font-hairline text-xxs absolute pin-b pin-r mb-1 mr-2;
 }
 
 .message-else .message-content {
-  @apply bg-white
+  @apply bg-white;
 }
 
 .message-self .message-content {
-  @apply bg-teal text-white
+  @apply bg-teal text-white;
 }
 
 .message-self .message-timestamp {
-  @apply text-white
+  @apply text-white;
 }

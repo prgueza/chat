@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import User from './user';
 
 const UserList = ({ users }) => {
-  const connectedUsers = users.map(user => user.connected && <User user={user} />);
-  const disconnectedUsers = users.map(user => !user.connected && <User user={user} />);
+  const connectedUsers = users.map(user => user.connected && <User user={user} key={user.name} />);
+  const disconnectedUsers = users.map(user => !user.connected && <User user={user} key={user.name} />);
   return (
     <div className="users">
       <h3 className="users-header">Connected Users</h3>
@@ -20,7 +20,11 @@ const UserList = ({ users }) => {
 };
 
 UserList.propTypes = {
-  users: PropTypes.shape.isRequired,
+  users: PropTypes.arrayOf(PropTypes.object),
+};
+
+UserList.defaultProps = {
+  users: null,
 };
 
 export default UserList;

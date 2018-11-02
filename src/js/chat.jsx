@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import moment from 'moment';
+import io from 'socket.io-client';
 import UserList from './userList';
 import Conversation from './conversation';
 
@@ -7,28 +8,40 @@ class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [
-        { name: 'Pedro', connected: true },
-        { name: 'Santi', connected: true },
-        { name: 'Raul', connected: true },
-        { name: 'Mateo', connected: false },
-        { name: 'Alex', connected: false },
-      ],
-      messages: [
-        { text: 'Esto es un mensaje.', timestamp: '12:26', author: 'Pedro' },
-        { text: 'Esto es otro mensaje escrito pero esta vez mucho más largo. Tan largo que ocupa más de una línea.', timestamp: '12:28', author: 'Mateo' },
-        { text: 'Esto es otro mensaje escrito.', timestamp: '12:30', author: 'Mateo' },
-        { text: 'Esto es otro mensaje escrito algo más largo que el anterior.', timestamp: '13:10', author: 'Raul' },
-      ],
+      socket: io('http://localhost:3000'),
+      user: {
+        name: 'Pedro',
+      },
+      users: [],
+      messages: [],
     };
   }
 
+  componentDidMount() {
+    const { socket } = this.state;
+    socket.on('get data', (data) => {
+      console.log('getting data...');
+      const { users, messages } = data;
+      this.setState({ users, messages });
+    });
+  }
+
+  sendMessage = (text) => {
+    const { socket, user: { name } } = this.state;
+    const message = {
+      author: name,
+      timestamp: moment(),
+      text,
+    };
+    socket.emit('new message', message);
+  }
+
   render() {
-    const { users, messages } = this.state;
+    const { users, user, messages } = this.state;
     return (
       <div className="chat">
         <UserList users={users} />
-        <Conversation messages={messages} />
+        <Conversation messages={messages} user={user} sendMessage={this.sendMessage} />
       </div>
     );
   }
