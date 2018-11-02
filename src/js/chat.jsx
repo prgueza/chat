@@ -26,7 +26,7 @@ class Chat extends Component {
   render() {
     const { users, messages } = this.state;
     return (
-      <div className="chat font-sans w-full h-full bg-white rounded shadow flex items-stretch">
+      <div className="chat">
         <UserList users={users} />
         <Conversation messages={messages} />
       </div>

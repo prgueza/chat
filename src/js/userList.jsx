@@ -6,13 +6,13 @@ const UserList = ({ users }) => {
   const connectedUsers = users.map(user => user.connected && <User user={user} />);
   const disconnectedUsers = users.map(user => !user.connected && <User user={user} />);
   return (
-    <div className="users p-3 w-1/3">
-      <h3 className="text-2xl px-3 py-2 antialiased text-grey-darkest">Connected Users</h3>
-      <ul className="list-reset px-4 py-3">
+    <div className="users">
+      <h3 className="users-header">Connected Users</h3>
+      <ul className="users-list">
         { connectedUsers }
       </ul>
-      <h3 className="text-2xl px-3 py-2 antialiased text-grey-darkest">Disconnected Users</h3>
-      <ul className="list-reset px-4 py-3">
+      <h3 className="users-header">Disconnected Users</h3>
+      <ul className="users-list">
         { disconnectedUsers }
       </ul>
     </div>
