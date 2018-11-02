@@ -7,52 +7,107 @@ body {
   background-image: linear-gradient(160deg, #08AEEA 0%, #2AF598 100%);
 }
 
-h1 {
-  @apply font-sans text-lg text-white text-5xl font-light;
-}
-
-h2 {
-  @apply font-sans text-lg text-white text-3xl font-hairline mt-5;
-}
-
 .app {
   height: 100%;
   display: grid;
-  grid-template-columns: 30% 40% 30%;
-  grid-template-rows: 30% 20% 30% 10% 10%;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-rows: 20% 60% 10% 10%;
   grid-template-areas: ". . ."
-                       ". content ."
-                       ". links ."
+                       ". chat ."
                        ". . ."
                        ". credits .";
 }
 
-.content {
-  grid-area: content;
-  @apply text-center;
+.chat {
+  grid-area: chat;
+  overflow: hidden;
+  @apply font-sans w-full h-full bg-white rounded shadow flex items-stretch;
 }
 
-.links {
-  grid-area: links;
-  @apply text-center flex;
+.conversation {
+  @apply w-2/3 bg-grey-lighter flex flex-col py-2 px-4;
 }
 
-.btn {
-  @apply flex-1 h-12 bg-transparent font-sans text-lg text-white font-hairline p-3 my-5 mx-2 border border-white rounded border-solid shadow;
+.conversation-content {
+  @apply bg-white flex-grow shadow-inner rounded my-2 px-6 py-3 overflow-y-scroll;
 }
 
-.btn:hover {
-  @apply bg-white text-teal-light;
-  animation-name: example;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-out;
+.write {
+  @apply flex flex-no-grow bg-white rounded my-2 h-12 relative;
 }
 
-.btn:active {
-  @apply shadow-none;
+.write-input-container {
+  @apply flex-grow h-full align-middle
 }
 
-@keyframes example {
-    from {@apply bg-transparent text-white}
-    to {@apply bg-white text-teal-light}
+.write-input {
+  @apply w-full h-full p-6 pr-16 appearance-none border-2 border-white rounded w-full py-2 px-4 leading-tight;
+}
+
+.write-input:focus {
+  @apply outline-none border-teal;
+}
+
+.write-icon-container {
+  @apply absolute pin-r w-16 align-middle self-center text-teal text-center;
+}
+
+.write-icon {
+  @apply text-xl;
+}
+
+.user {
+  @apply user antialiased block text-grey-darkest text-lg py-2;
+}
+
+.user-icon {
+  @apply align-middle text-teal text-xxs mr-3 mb-1;
+}
+
+.users {
+  @apply p-3 w-1/3;
+}
+
+.users-header {
+  @apply text-2xl px-3 py-2 antialiased text-grey-darkest;
+}
+
+.users-list {
+  @apply list-reset px-4 py-3
+}
+
+.message {
+ @apply flex my-2
+}
+
+.message-self {
+  @apply flex-row-reverse;
+}
+
+.message-else {
+  @flex flex-row
+}
+
+.message-content {
+  @apply relative rounded border border-teal shadow max-w-2/3 pl-4 py-2 pr-12 mr-2
+}
+
+.message-author {
+  @apply font-hairline mb-1 text-teal
+}
+
+.message-timestamp {
+  @apply font-hairline text-xxs absolute pin-b pin-r mb-1 mr-2
+}
+
+.message-else .message-content {
+  @apply bg-white
+}
+
+.message-self .message-content {
+  @apply bg-teal text-white
+}
+
+.message-self .message-timestamp {
+  @apply text-white
 }
