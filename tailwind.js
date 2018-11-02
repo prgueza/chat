@@ -195,6 +195,7 @@ module.exports = {
 
   fonts: {
     sans: [
+      'Avenir',
       'system-ui',
       'BlinkMacSystemFont',
       '-apple-system',
@@ -251,6 +252,7 @@ module.exports = {
   */
 
   textSizes: {
+    xxs: '.50rem',
     xs: '.75rem', // 12px
     sm: '.875rem', // 14px
     base: '1rem', // 16px
@@ -604,6 +606,7 @@ module.exports = {
     '3xl': '80rem',
     '4xl': '90rem',
     '5xl': '100rem',
+    '2/3': '66.66667%;',
     full: '100%',
   },
 
