@@ -1,34 +1,57 @@
 import React, { Component } from 'react';
-
+import moment from 'moment';
+import io from 'socket.io-client';
 import UserList from './userList';
 import Conversation from './conversation';
+import Login from './login';
 
 class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: [
-        { name: 'Pedro', connected: true },
-        { name: 'Santi', connected: true },
-        { name: 'Raul', connected: true },
-        { name: 'Mateo', connected: false },
-        { name: 'Alex', connected: false },
-      ],
-      messages: [
-        { text: 'Esto es un mensaje.', timestamp: '12:26', author: 'Pedro' },
-        { text: 'Esto es otro mensaje escrito pero esta vez mucho más largo. Tan largo que ocupa más de una línea.', timestamp: '12:28', author: 'Mateo' },
-        { text: 'Esto es otro mensaje escrito.', timestamp: '12:30', author: 'Mateo' },
-        { text: 'Esto es otro mensaje escrito algo más largo que el anterior.', timestamp: '13:10', author: 'Raul' },
-      ],
+      loggedIn: false,
+      socket: null,
+      user: {
+        name: 'Pedro',
+      },
+      users: [],
+      messages: [],
     };
   }
 
+  login = (name) => {
+    const user = { name, connected: true };
+    const socket = io('http://localhost:3000');
+    socket.emit('login', user);
+    socket.on('get data', (data) => {
+      console.log('getting data...');
+      const { users, messages } = data;
+      this.setState({ users, messages });
+    });
+    this.setState({ user, socket, loggedIn: true });
+  }
+
+  sendMessage = (text) => {
+    const { socket, user: { name } } = this.state;
+    const message = {
+      author: name,
+      timestamp: moment(),
+      text,
+    };
+    socket.emit('new message', message);
+  }
+
   render() {
-    const { users, messages } = this.state;
+    const {
+      users, user, messages, loggedIn,
+    } = this.state;
     return (
       <div className="chat">
         <UserList users={users} />
-        <Conversation messages={messages} />
+        { loggedIn
+          ? <Conversation messages={messages} user={user} sendMessage={this.sendMessage} />
+          : <Login login={this.login} />
+        }
       </div>
     );
   }

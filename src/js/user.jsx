@@ -10,7 +10,14 @@ const User = ({ user: { name } }) => (
 );
 
 User.propTypes = {
-  user: PropTypes.shape.isRequired,
+  user: PropTypes.shape({
+    name: PropTypes.string,
+    connected: PropTypes.bool,
+  }),
+};
+
+User.defaultProps = {
+  user: null,
 };
 
 export default User;
