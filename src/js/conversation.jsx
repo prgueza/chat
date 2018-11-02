@@ -7,7 +7,7 @@ const Conversation = ({ messages, user, sendMessage }) => {
   const conversationMessages = messages.map(message => <Message message={message} user={user} key={message.timestamp} />);
   return (
     <div className="conversation">
-      <div className="conversation-content">
+      <div className="conversation-content h-full">
         { conversationMessages }
       </div>
       <Write sendMessage={sendMessage} />

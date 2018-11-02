@@ -19,7 +19,7 @@ class Write extends Component {
     event.preventDefault();
     const { sendMessage } = this.props;
     const { text } = this.state;
-    sendMessage(text);
+    if (text !== '') sendMessage(text);
     this.setState({ text: '' });
   }
 

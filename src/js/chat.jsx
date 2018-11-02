@@ -3,12 +3,14 @@ import moment from 'moment';
 import io from 'socket.io-client';
 import UserList from './userList';
 import Conversation from './conversation';
+import Login from './login';
 
 class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      socket: io('http://localhost:3000'),
+      loggedIn: false,
+      socket: null,
       user: {
         name: 'Pedro',
       },
@@ -17,13 +19,16 @@ class Chat extends Component {
     };
   }
 
-  componentDidMount() {
-    const { socket } = this.state;
+  login = (name) => {
+    const user = { name, connected: true };
+    const socket = io('http://localhost:3000');
+    socket.emit('login', user);
     socket.on('get data', (data) => {
       console.log('getting data...');
       const { users, messages } = data;
       this.setState({ users, messages });
     });
+    this.setState({ user, socket, loggedIn: true });
   }
 
   sendMessage = (text) => {
@@ -37,11 +42,16 @@ class Chat extends Component {
   }
 
   render() {
-    const { users, user, messages } = this.state;
+    const {
+      users, user, messages, loggedIn,
+    } = this.state;
     return (
       <div className="chat">
         <UserList users={users} />
-        <Conversation messages={messages} user={user} sendMessage={this.sendMessage} />
+        { loggedIn
+          ? <Conversation messages={messages} user={user} sendMessage={this.sendMessage} />
+          : <Login login={this.login} />
+        }
       </div>
     );
   }

@@ -32,6 +32,35 @@ body {
   @apply bg-white flex-grow shadow-inner rounded my-2 px-6 py-3 overflow-y-scroll;
 }
 
+.login {
+  @apply w-2/3 bg-grey-lighter flex flex-col py-2 px-4;
+}
+
+.login-content {
+  @apply bg-white flex-grow shadow-inner rounded my-2 px-6 py-3 overflow-y-scroll;
+}
+
+.login-input{
+  @apply appearance-none border-2 border-grey-lighter rounded leading-tight;
+}
+
+.login-input:focus {
+  @apply outline-none border-teal;
+}
+
+.login-button{
+  @apply bg-teal border-2 border-teal rounded h-10 px-4 py-2 text-white;
+}
+
+.login-button:focus {
+  @apply outline-none shadow-lg;
+}
+
+.login-button:active {
+  @apply outline-none bg-white text-teal border-teal;
+}
+
+
 .write {
   @apply flex flex-no-grow bg-white rounded my-2 h-12 relative;
 }
