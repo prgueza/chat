@@ -21,7 +21,7 @@ class Chat extends Component {
 
   login = (name) => {
     const user = { name, connected: true };
-    const socket = io('http://localhost:3000');
+    const socket = io('https://chat-develop.herokuapp.com/');
     socket.emit('login', user);
     socket.on('get data', (data) => {
       console.log('getting data...');
