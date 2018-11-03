@@ -21,7 +21,7 @@ body {
 .chat {
   grid-area: chat;
   overflow: hidden;
-  @apply font-sans w-full h-full bg-white rounded shadow flex items-stretch;
+  @apply font-sans w-full h-full bg-white rounded flex shadow items-stretch;
 }
 
 .conversation {
@@ -29,7 +29,7 @@ body {
 }
 
 .conversation-content {
-  @apply bg-white flex-grow shadow-inner rounded my-2 px-6 py-3 overflow-y-scroll;
+  @apply h-full bg-white flex-grow shadow-inner rounded my-2 px-6 py-3 overflow-y-scroll;
 }
 
 .login {

@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "build": "webpack --mode development --watch"
+    "start": "./bin/www"
   },
   "repository": {
     "type": "git",
